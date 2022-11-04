@@ -83,3 +83,41 @@ SELECT MAX(weight_kg), MIN(weight_kg)
 SELECT AVG(escape_attempts) AS AVG_escape_attempts
 	FROM animals
 	WHERE date_of_birth >= '1990/01/01' AND date_of_birth <= '2000/12/31';
+
+-- DAY 3
+SELECT O.full_name AS owners_name, A.name AS animals_name
+	FROM owners AS O
+	JOIN animals AS A ON A.owner_id = O.id
+	WHERE O.full_name='Melody Pond';
+
+SELECT * 
+	FROM animals AS A
+	JOIN species AS S
+		ON A.species_id = S.id
+		WHERE S.id = 1;
+
+SELECT O.full_name, A.name
+	FROM owners AS O
+	LEFT JOIN animals AS A
+		ON A.owner_id = O.id
+
+SELECT S.id AS species_id, S.name AS species_name, COUNT(A.species_id) AS total_number_of_animals
+	FROM species AS S
+	JOIN animals AS A
+	ON A.species_id = S.id
+	GROUP BY S.id
+
+SELECT *
+	FROM species AS S
+	JOIN animals AS A
+	ON S.id = A.species_id
+	JOIN owners AS O
+	ON O.id = A.owner_id
+	WHERE S.id = 2 AND O.full_name = 'Jennifer Orwell';
+
+SELECT O.full_name AS heighest_number_of_animals_holder, COUNT(*) AS total_number_of_animals
+	FROM animals AS A
+	JOIN owners AS O
+	ON O.id = A.owner_id
+	GROUP BY O.full_name
+	ORDER BY COUNT(*) DESC LIMIT 1;
