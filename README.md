@@ -2,6 +2,9 @@
 
 > This REPO is about SQL database creattion.
 
+**Vet Clinic** is an application that stores information on different animals in a database
+![image](./vet-clinic-database%20diagram.png)
+
 
 
 ## Getting Started
